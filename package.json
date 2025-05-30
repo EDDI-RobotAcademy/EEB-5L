@@ -1,0 +1,12 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "external-remotes-plugin": "^1.0.0",
+    "lerna": "^8.2.2"
+  }
+}
