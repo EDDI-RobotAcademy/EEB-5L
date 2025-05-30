@@ -462,3 +462,5 @@ pyrightconfig.json
 # exclude .env
 .env
 
+# exclude @mf-types
+@mf-types

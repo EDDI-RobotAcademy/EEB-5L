@@ -1,0 +1,16 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "html-container",
+    "html-css-test-app"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "start": "lerna run start --parallel"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "lerna": "^8.2.1"
+  }
+}

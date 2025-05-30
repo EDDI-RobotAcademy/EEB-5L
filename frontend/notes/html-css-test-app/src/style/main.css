@@ -1,0 +1,116 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: darkblue;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.box {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 5px;
+    border: 2px solid #007bff;
+    font-weight: bold;
+    text-align: left;
+}
+
+ul {
+    text-align: left;
+    margin: 10px auto;
+    display: inline-block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    color: #444;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"] {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+.custom-button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #4a90e2;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-button:hover {
+    background-color: #357ab8;
+}
+
+h1::after {
+    content: " ✨";
+    color: gold;
+}
+
+.box:hover {
+    transition: background-color 0.5s ease-in-out;
+    background-color: lightblue;
+}
+
+@keyframes example {
+    from { background-color: red; }
+    to { background-color: yellow; }
+}
+
+.animated-box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    animation: example 2s infinite alternate;
+}
