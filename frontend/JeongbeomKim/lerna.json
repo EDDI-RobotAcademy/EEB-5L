@@ -8,6 +8,8 @@
     "kakao-authentication",
     "navigation-bar-app",
     "vuetify-tailwind-board-app",
-    "react-test-app"
+    "react-test-app",
+    "google-authentication",
+    "recoil-board-app"
   ]
 }

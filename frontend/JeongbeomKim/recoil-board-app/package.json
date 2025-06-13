@@ -1,5 +1,5 @@
 {
-  "name": "react-test-app",
+  "name": "recoil-board-app",
   "version": "0.0.1",
   "scripts": {
     "build": "NODE_ENV=production rspack build",
@@ -27,11 +27,11 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@module-federation/enhanced": "^0.8.9",
+    "@mui/icons-material": "^7.0.1",
     "@mui/material": "^7.0.1",
-    "@reduxjs/toolkit": "^2.8.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^9.2.0",
-    "react-router-dom": "^6.30.0"
+    "react-router-dom": "^6.30.1",
+    "recoil": "^0.7.7"
   }
 }

@@ -57,6 +57,22 @@ services:
     networks:
       - app-network
 
+  google-authentication:
+    build:
+      context: ./google-authentication
+    ports:
+      - "3100:3100"
+    networks:
+      - app-network
+
+  recoil-board:
+    build:
+      context: ./recoil-board
+    ports:
+      - "3101:3101"
+    networks:
+      - app-network
+
 networks:
   app-network:
     driver: bridge
