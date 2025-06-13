@@ -15,7 +15,7 @@ const App = () => {
         )
 }
 const StCotainer = styled.main`
-  width: 100vw;
+  width: auto;
   height: 100vh;
   display: flex;
   justify-content: flex-start;

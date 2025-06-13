@@ -8,7 +8,9 @@
     "kakao-authentication",
     "navigation-bar-app",
     "react-test-app",
-    "practice_app"
+    "practice_app",
+    "google-authentication",
+    "recoil-board-app"
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",

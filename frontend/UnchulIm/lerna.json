@@ -8,7 +8,9 @@
     "kakao-authentication",
     "navigation-bar-app",
     "react-test-app",
-    "practice-app"
+    "practice-app",
+    "google-authentication",
+    "recoil-board-app"
   ],
   "hoist": true
 }

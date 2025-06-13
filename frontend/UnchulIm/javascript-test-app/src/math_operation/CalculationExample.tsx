@@ -6,9 +6,8 @@ export const CalculationExample = () => {
     const remainder = 10 % 3;
 
     return (
-        <div style={{ marginBottom: "16px", padding: "16px", 
-                        border: "1px solid #ccc", borderRadius: "8px" }}>
-            <h3>연산 결과</h3>
+        <div className="bg-gray-100 p-5 my-4 rounded-md border-2 border-blue-500 font-bold text-left">
+        <h3>연산 결과</h3>
             <p>3 + 3 = {add}</p>
             <p>10 - 5 = {subtract}</p>
             <p>4 * 2 = {multiply}</p>
