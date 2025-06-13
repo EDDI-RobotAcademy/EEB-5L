@@ -56,12 +56,20 @@ services:
       - "3007:3007"
     networks:
       - app-network
-      -
+
   google-authentication:
     build:
       context: ./google-authentication
     ports:
       - "3100:3100"
+    networks:
+      - app-network
+
+  recoil-board-app:
+    build:
+      context: ./recoil-board-app
+    ports:
+      - "3101:3101"
     networks:
       - app-network
 
