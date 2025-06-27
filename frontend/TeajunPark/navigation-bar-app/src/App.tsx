@@ -37,17 +37,8 @@ const App: React.FC = () => {
                 <Button color="inherit" component={Link} to="/" startIcon={<HomeIcon />}>
                     Home
                 </Button>
-                <Button color="inherit" component={Link} to="/html-css-test" startIcon={<CodeIcon />}>
-                    HTML/CSS Test
-                </Button>
-                <Button color="inherit" component={Link} to="/js-test" startIcon={<JavascriptIcon />}>
-                    Javascript Test
-                </Button>
                 <Button color="inherit" component={Link} to="/board/list" startIcon={<ForumIcon />}>
                     게시판
-                </Button>
-                <Button color="inherit" component={Link} to="/react-test" startIcon={<SportsGymnasticsIcon />}>
-                    React 실험
                 </Button>
                 <Button
                     color="inherit"

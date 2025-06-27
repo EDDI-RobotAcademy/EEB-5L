@@ -5,14 +5,9 @@ import { CircularProgress } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const NavigationBarApp = lazy(() => import("navigationBarApp/App"));
-const HtmlCssTestApp = lazy(() => import("htmlCssTestApp/App"));
-const JavascriptTestApp = lazy(() => import("javascriptTestApp/App"));
 const KakaoAuthenticationApp = lazy(() => import("kakaoAuthenticationApp/App"));
 const GoogleAuthenticationApp = lazy(() => import("googleAuthenticationApp/App"));
-const ReactTestApp = lazy(() => import("reactTestApp/App"));
-const RecoilBoardApp = lazy(() => import("recoilBoardApp/App"));
 
-import VuetifyTailwindBoardAppWrapper from "./VuetifyTailwindBoardAppWrapper";
 import DiceGameAppWrapper from "./DiceGameAppWrapper.tsx";
 
 const App = () => {
@@ -31,13 +26,8 @@ const App = () => {
 
                 <Routes>
                     <Route path="/" element={<div>Home Page</div>} />
-                    <Route path="/html-css-test" element={<HtmlCssTestApp />} />
-                    <Route path="/js-test" element={<JavascriptTestApp />} />
                     <Route path="/kakao-authentication/*" element={<KakaoAuthenticationApp />} />
-                    <Route path="/board/*" element={<VuetifyTailwindBoardAppWrapper />} />
-                    <Route path="/react-test" element={<ReactTestApp />} />
                     <Route path="/google-authentication/*" element={<GoogleAuthenticationApp />} />
-                    <Route path="/recoil-board/*" element={<RecoilBoardApp />} />
                     <Route path="/dice-game" element={<DiceGameAppWrapper />} />
                 </Routes>
             </Suspense>

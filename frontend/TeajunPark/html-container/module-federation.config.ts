@@ -1,14 +1,9 @@
 export const mfConfig = {
   name: "html_container",
   remotes: {
-    htmlCssTestApp: "htmlCssTestApp@http://localhost:3001/remoteEntry.js",
-    javascriptTestApp: "javascriptTestApp@http://localhost:3002/remoteEntry.js",
     kakaoAuthenticationApp: "kakaoAuthenticationApp@http://localhost:3003/remoteEntry.js",
-    vuetifyTailwindBoardApp: "vuetifyTailwindBoardApp@http://localhost:3004/remoteEntry.js",
     navigationBarApp: "navigationBarApp@http://localhost:3005/remoteEntry.js",
-    reactTestApp: "reactTestApp@http://localhost:3006/remoteEntry.js",
     googleAuthenticationApp: "googleAuthenticationApp@http://localhost:3100/remoteEntry.js",
-    recoilBoardApp: "recoilBoardApp@http://localhost:3101/remoteEntry.js",
     diceGameApp: "diceGameApp@http://localhost:3102/remoteEntry.js"
   },
   shared: {
