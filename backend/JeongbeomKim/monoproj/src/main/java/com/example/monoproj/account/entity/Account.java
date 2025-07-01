@@ -16,18 +16,23 @@ public class Account {
     @JoinColumn(name = "role_type_id", nullable = false)
     private AccountRoleType roleType;
 
+    @ManyToOne
+    @JoinColumn(name = "login_type_id", nullable = false)
+    private AccountLoginType loginType;
+
     public Account() {
     }
 
-    public Account(AccountRoleType roleType) {
+    public Account(AccountRoleType roleType, AccountLoginType loginType) {
         this.roleType = roleType;
-    }
-
-    public AccountRoleType getRoleType() {
-        return roleType;
+        this.loginType = loginType;
     }
 
     public void setRoleType(AccountRoleType roleType) {
         this.roleType = roleType;
+    }
+
+    public void setLoginType(AccountLoginType loginType) {
+        this.loginType = loginType;
     }
 }

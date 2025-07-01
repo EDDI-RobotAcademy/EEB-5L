@@ -1,6 +1,7 @@
 package com.example.monoproj.account_profile.service;
 
 import com.example.monoproj.account.entity.Account;
+import com.example.monoproj.account.entity.LoginType;
 import com.example.monoproj.account_profile.entity.AccountProfile;
 import com.example.monoproj.account_profile.repository.AccountProfileRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -23,5 +24,10 @@ public class AccountProfileServiceImpl implements AccountProfileService {
     @Override
     public Optional<AccountProfile> loadProfileByEmail(String email) {
         return accountProfileRepository.findWithAccountByEmail(email);
+    }
+
+    @Override
+    public Optional<AccountProfile> loadProfileByEmailAndLoginType(String email, LoginType loginType) {
+        return accountProfileRepository.findWithAccountByEmailAndLoginType(email, loginType);
     }
 }

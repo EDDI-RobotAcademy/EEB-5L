@@ -13,7 +13,7 @@ public class AccountProfile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nickname", length = 32, unique = true, nullable = false)
+    @Column(name = "nickname", length = 64, unique = true, nullable = false)
     private String nickname;
 
     @Column(name = "email", length = 32, unique = true, nullable = false)

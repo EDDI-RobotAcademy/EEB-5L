@@ -1,6 +1,7 @@
 package com.example.monoproj.kakao_authentication.controller;
 
 import com.example.monoproj.account.entity.Account;
+import com.example.monoproj.account.entity.LoginType;
 import com.example.monoproj.account.service.AccountService;
 import com.example.monoproj.account_profile.entity.AccountProfile;
 import com.example.monoproj.account_profile.service.AccountProfileService;
@@ -56,7 +57,7 @@ public class KakaoAuthenticationController {
             String email = (String) ((Map) userInfo.get("kakao_account")).get("email");
             log.info("email: {}", email);
 
-            Optional<AccountProfile> optionalProfile = accountProfileService.loadProfileByEmail(email);
+            Optional<AccountProfile> optionalProfile = accountProfileService.loadProfileByEmailAndLoginType(email, LoginType.KAKAO);
             Account account = null;
 
             if (optionalProfile.isPresent()) {
@@ -66,28 +67,11 @@ public class KakaoAuthenticationController {
 
             if (account == null) {
                 log.info("New user detected. Creating account and profile...");
-                account = accountService.createAccount();
+                account = accountService.createAccount(LoginType.KAKAO);
                 accountProfileService.createAccountProfile(account, nickname, email);
             }
 
             String userToken = createUserTokenWithAccessToken(account, accessToken);
-
-//            String redirectUri = "http://localhost/kakao-authentication/callback?userToken=" + userToken;
-//            response.sendRedirect(redirectUri);
-
-//            String htmlResponse = """
-//            <html>
-//              <body>
-//                <script>
-//                  window.opener.postMessage({
-//                    accessToken: '%s',
-//                    user: { name: '%s', email: '%s' }
-//                  }, 'http://192.168.0.107');
-//                  window.close();
-//                </script>
-//              </body>
-//            </html>
-//            """.formatted(userToken, nickname, email);
 
             String origin = frontendConfig.getOrigins().get(0);
             String htmlResponse = """

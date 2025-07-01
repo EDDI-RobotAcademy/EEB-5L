@@ -21,7 +21,7 @@ public class RedisCacheServiceImpl implements RedisCacheService {
         String valueAsString = String.valueOf(value);
 
         ValueOperations<String, String> valueOps = redisTemplate.opsForValue();
-        valueOps.set(keyAsString, valueAsString, Duration.ofMinutes(3));
+        valueOps.set(keyAsString, valueAsString, Duration.ofMinutes(720));
     }
 
     @Override

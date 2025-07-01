@@ -1,6 +1,7 @@
 package com.example.monoproj.google_authentication.controller;
 
 import com.example.monoproj.account.entity.Account;
+import com.example.monoproj.account.entity.LoginType;
 import com.example.monoproj.account.service.AccountService;
 import com.example.monoproj.account_profile.entity.AccountProfile;
 import com.example.monoproj.account_profile.service.AccountProfileService;
@@ -51,7 +52,7 @@ public class GoogleAuthenticationController {
             String nickname = (String) userInfo.get("name");
             log.info("email: {}, nickname: {}", email, nickname);
 
-            Optional<AccountProfile> optionalProfile = accountProfileService.loadProfileByEmail(email);
+            Optional<AccountProfile> optionalProfile = accountProfileService.loadProfileByEmailAndLoginType(email, LoginType.GOOGLE);
             Account account = null;
 
             if (optionalProfile.isPresent()) {
@@ -61,7 +62,7 @@ public class GoogleAuthenticationController {
 
             if (account == null) {
                 log.info("New user detected. Creating account and profile...");
-                account = accountService.createAccount();
+                account = accountService.createAccount(LoginType.GOOGLE);
                 accountProfileService.createAccountProfile(account, nickname, email);
             }
 
