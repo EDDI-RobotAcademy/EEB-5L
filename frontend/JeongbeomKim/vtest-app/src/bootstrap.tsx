@@ -17,11 +17,11 @@ import * as labsComponents from 'vuetify/labs/components'
 
 import { createVuetify } from 'vuetify/lib/framework.mjs'
 import { createPinia } from 'pinia'
-import router from './router'
+// import router from './router'
 
 let app: VueApp<Element> | null = null;
 
-export const vueBoardAppMount = (el: string | Element, eventBus: any) => {
+export const vtestAppMount = (el: string | Element, eventBus: any) => {
     console.log('mount 다시 하는 중이야')
 
     // Shadow DOM 만들기
@@ -62,13 +62,14 @@ export const vueBoardAppMount = (el: string | Element, eventBus: any) => {
         });
 
         const pinia = createPinia();
-        app.use(vuetify).use(router).use(pinia);
+        // app.use(vuetify).use(router).use(pinia);
+        app.use(vuetify).use(pinia);
         app.provide('eventBus', eventBus);
 
         eventBus.on('vue-board-routing-event', (path: string) => {
-            if (router.currentRoute.value.fullPath !== path) {
-                router.push(path);
-            }
+            // if (router.currentRoute.value.fullPath !== path) {
+            //     router.push(path);
+            // }
         });
 
         app.mount(shadowAppRoot);

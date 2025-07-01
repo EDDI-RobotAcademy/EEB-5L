@@ -22,23 +22,6 @@ import router from './router'
 let app: VueApp<Element> | null = null;
 
 export const vueBoardAppMount = (el: string | Element, eventBus: any) => {
-    console.log('mount 다시 하는 중이야')
-
-    // Shadow DOM 만들기
-    const container = typeof el === 'string' ? document.querySelector(el) : el;
-    if (!container) return;
-
-    // 이미 마운트되어 있으면 지움
-    container.innerHTML = '';
-    const shadowRoot = container.attachShadow({ mode: 'open' });
-
-    // Vuetify 스타일 CDN 주입
-    injectVuetifyCssIntoShadow(shadowRoot);
-
-    // mount용 루트 만들기
-    const shadowAppRoot = document.createElement('div');
-    shadowRoot.appendChild(shadowAppRoot);
-
     loadFonts().then(() => {
         const vuetify = createVuetify({
             components: {
@@ -71,23 +54,9 @@ export const vueBoardAppMount = (el: string | Element, eventBus: any) => {
             }
         });
 
-        app.mount(shadowAppRoot);
+        app.mount(el);
     });
 };
-
-// Shadow DOM용 Vuetify 스타일 주입
-function injectVuetifyCssIntoShadow(shadowRoot: ShadowRoot) {
-    const vuetifyLink = document.createElement('link');
-    vuetifyLink.setAttribute('rel', 'stylesheet');
-    vuetifyLink.setAttribute('href', 'https://cdn.jsdelivr.net/npm/vuetify@3.x/dist/vuetify.min.css');
-
-    const mdiLink = document.createElement('link');
-    mdiLink.setAttribute('rel', 'stylesheet');
-    mdiLink.setAttribute('href', 'https://cdn.jsdelivr.net/npm/@mdi/font@7.x/css/materialdesignicons.min.css');
-
-    shadowRoot.appendChild(vuetifyLink);
-    shadowRoot.appendChild(mdiLink);
-}
 
 export const vueBoardAppUnmount = () => {
     if (app) {
