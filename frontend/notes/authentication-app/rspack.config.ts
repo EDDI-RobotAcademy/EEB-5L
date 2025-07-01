@@ -1,6 +1,6 @@
 import * as path from "node:path";
 import { defineConfig } from "@rspack/cli";
-import { rspack } from "@rspack/core";
+import {DefinePlugin, rspack} from "@rspack/core";
 import * as RefreshPlugin from "@rspack/plugin-react-refresh";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 
@@ -81,6 +81,19 @@ export default defineConfig({
   plugins: [
     new rspack.HtmlRspackPlugin({
       template: "./index.html",
+    }),
+    new DefinePlugin({
+      "process.env.REACT_KAKAO_AUTH_URL": JSON.stringify(process.env.REACT_KAKAO_AUTH_URL),
+      "process.env.REACT_KAKAO_ORIGINS": JSON.stringify(process.env.REACT_KAKAO_ORIGINS),
+      "process.env.REACT_GOOGLE_AUTH_URL": JSON.stringify(process.env.REACT_GOOGLE_AUTH_URL),
+      "process.env.REACT_GOOGLE_ORIGINS": JSON.stringify(process.env.REACT_GOOGLE_ORIGINS),
+      "process.env.REACT_NAVER_AUTH_URL": JSON.stringify(process.env.REACT_NAVER_AUTH_URL),
+      "process.env.REACT_NAVER_ORIGINS": JSON.stringify(process.env.REACT_NAVER_ORIGINS),
+      "process.env.REACT_GITHUB_AUTH_URL": JSON.stringify(process.env.REACT_GITHUB_AUTH_URL),
+      "process.env.REACT_GITHUB_ORIGINS": JSON.stringify(process.env.REACT_GITHUB_ORIGINS),
+      "process.env.REACT_META_AUTH_URL": JSON.stringify(process.env.REACT_META_AUTH_URL),
+      "process.env.REACT_META_ORIGINS": JSON.stringify(process.env.REACT_META_ORIGINS),
+      "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
     }),
     new ModuleFederationPlugin(mfConfig),
     isDev ? new RefreshPlugin() : null,
