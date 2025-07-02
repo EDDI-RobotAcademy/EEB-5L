@@ -14,8 +14,7 @@
     "allowImportingTsExtensions": true,
     "paths": {
       "*": ["./@mf-types/*"]
-    },
-    "types": ["svelte"]
+    }
   },
   "include": ["src"],
   "ts-node": {

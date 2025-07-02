@@ -42,7 +42,6 @@
 </script>
 
 {#if showGame && gameId}
-    <button on:click={goHome} style="position: absolute; top: 20px; right: 20px; z-index: 10;">🏠 홈으로</button>
     <Dice {gameId} />
 {:else}
     <main style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">

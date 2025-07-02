@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import HomeIcon from "@mui/icons-material/Home";
 import CodeIcon from "@mui/icons-material/Code";
@@ -9,18 +9,26 @@ import ForumIcon from "@mui/icons-material/Forum";
 import SportsGymnasticsIcon from '@mui/icons-material/SportsGymnastics';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
+import KakaoAuthenticationRouter from "./router/NavigationRouter.tsx";
 
 const App: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    const handleAuthClick = () => {
-        setIsLoggedIn(isLoggedIn => !isLoggedIn);
-    };
+    const navigate = useNavigate();
 
     return (
         <AppBar position="static">
             <Toolbar>
-                <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                <Typography
+                    variant="h6"
+                    component={Link}
+                    to="/"
+                    sx={{
+                        flexGrow: 1,
+                        textDecoration: "none",
+                        color: "inherit",
+                        fontWeight: 'bold',
+                    }}
+                >
                     EDDI
                 </Typography>
                 <Button
@@ -32,30 +40,6 @@ const App: React.FC = () => {
                 <Button
                     color="inherit"
                     component={Link}
-                    to="/html-css-test"
-                    startIcon={<CodeIcon />}
-                >
-                    HTML
-                </Button>
-                <Button
-                    color="inherit"
-                    component={Link}
-                    to="/js-test"
-                    startIcon={<JavascriptIcon />}
-                >
-                    JS
-                </Button>
-                {/*<Button*/}
-                {/*    color="inherit"*/}
-                {/*    component={Link}*/}
-                {/*    to="/board/list"*/}
-                {/*    startIcon={<ForumIcon />}*/}
-                {/*>*/}
-                {/*    R게시판*/}
-                {/*</Button>*/}
-                <Button
-                    color="inherit"
-                    component={Link}
                     to="/vue-board/list"
                     startIcon={<ForumIcon />}
                 >
@@ -64,15 +48,7 @@ const App: React.FC = () => {
                 <Button
                     color="inherit"
                     component={Link}
-                    to="/react-test"
-                    startIcon={<SportsGymnasticsIcon />}
-                >
-                    React
-                </Button>
-                {/* 로그인 / 로그아웃 버튼 */}
-                <Button
-                    color="inherit"
-                    onClick={handleAuthClick}
+                    to="/social-authentication"
                     startIcon={isLoggedIn ? <LogoutIcon /> : <LoginIcon />}
                 >
                 </Button>
