@@ -3,15 +3,11 @@
   "private": true,
   "workspaces": [
     "html-container",
-    "kakao-authentication",
     "navigation-bar-app",
-    "react-test-app",
     "practice-app",
-    "modal-test",
-    "google-authentication",
-    "recoil-board-app",
     "dice-game-app",
-    "vue-board-app"
+    "vue-board-app",
+    "authentication-app"
   ],
   "scripts": {
     "start": "lerna run start --parallel"

@@ -59,7 +59,7 @@ const App: React.FC = () => {
                 <Button
                     color="inherit"
                     component={Link}
-                    to="/board/list"
+                    to="/vue-board"
                     startIcon={<ForumIcon />}
                 >
                     게시판

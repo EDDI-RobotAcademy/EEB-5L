@@ -1,7 +1,7 @@
 import {createApp, h} from 'vue'
 import type { App as VueApp } from 'vue'
 import App from './App.vue'
-import vuetify from './plugins/vuetify'
+// import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 
 import { aliases } from 'vuetify/iconsets/mdi'
@@ -46,11 +46,11 @@ export const vueBoardAppMount = (el: string | Element, eventBus: any) => {
 
         app.provide('eventBus', eventBus);
 
-        // eventBus.on('vue-board-routing-event', (path: string) => {
-        //     if (router.currentRoute.value.fullPath !== path) {
-        //         router.push(path);
-        //     }
-        // });
+        eventBus.on('vue-board-routing-event', (path: string) => {
+            if (router.currentRoute.value.fullPath !== path) {
+                router.push(path);
+            }
+        });
 
         app.mount(el);
     });
