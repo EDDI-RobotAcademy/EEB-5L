@@ -7,7 +7,8 @@
     "navigation-bar-app",
     "google-authentication",
     "dice-game-app",
-    "vue-board-app"
+    "vue-board-app",
+    "authentication-app"
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",

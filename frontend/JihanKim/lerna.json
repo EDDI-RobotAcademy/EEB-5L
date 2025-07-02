@@ -12,7 +12,8 @@
     "google-authentication",
     //    "recoil-board-app",
     "dice-game-app",
-    "vue-board-app"
+    "vue-board-app",
+    "authentication-app"
   ],
   "hoist": true
 }

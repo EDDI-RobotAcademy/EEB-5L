@@ -14,6 +14,7 @@ const KakaoAuthenticationApp = lazy(() => import("kakaoAuthenticationApp/App"));
 const GoogleAuthenticationApp = lazy(() => import("googleAuthenticationApp/App"));
 // const ReactTestApp = lazy(() => import("reactTestApp/App"));
 // const RecoilBoardApp = lazy(() => import("recoilBoardApp/App"))
+const AuthenticationApp = lazy(() => import("authenticationApp/App"));
 
 // import VuetifyTailwindBoardAppWrapper from "./VuetifyTailwindBoardAppWrapper";
 import VueBoardAppWrapper from "./VueBoardWrapper.tsx";
@@ -46,6 +47,7 @@ const App = () => {
                     {/*<Route path="/recoil-board/*" element={<RecoilBoardApp />} />*/}
                     <Route path="/vue-board/*" element={<VueBoardAppWrapper eventBus={eventBus}/>} />
                     <Route path="/dice-game" element={<DiceGameAppWrapper />} />
+                    <Route path="/authentication/*" element={<AuthenticationApp />} />
                 </Routes>
             </Suspense>
         </BrowserRouter>
