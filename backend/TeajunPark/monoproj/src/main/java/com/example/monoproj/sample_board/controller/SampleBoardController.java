@@ -22,7 +22,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/board")
+@RequestMapping("/sample_board")
 public class SampleBoardController {
     final private SampleBoardService sampleBoardService;
     final private RedisCacheService redisCacheService;

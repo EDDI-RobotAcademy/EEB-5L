@@ -1,5 +1,5 @@
 {
-  "name": "navigation-bar-app",
+  "name": "authentication-app",
   "version": "0.0.1",
   "scripts": {
     "build": "NODE_ENV=production rspack build",
@@ -11,7 +11,6 @@
     "@rspack/cli": "~1.2.0",
     "@rspack/core": "~1.2.0",
     "@rspack/plugin-react-refresh": "~1.0.1",
-    "@tailwindcss/postcss": "^4.0.3",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "autoprefixer": "^10.1.0",
@@ -19,9 +18,10 @@
     "postcss": "^8.2.1",
     "postcss-loader": "^8.0.0",
     "react-refresh": "^0.14.0",
-    "tailwindcss": "^4.0.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "@tailwindcss/postcss": "^4.0.3",
+    "tailwindcss": "^4.0.3"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -31,6 +31,6 @@
     "@mui/material": "^7.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.30.0"
+    "react-router-dom": "^6.30.1"
   }
 }

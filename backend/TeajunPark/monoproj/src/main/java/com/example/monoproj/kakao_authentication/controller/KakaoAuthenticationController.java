@@ -4,6 +4,7 @@ import com.example.monoproj.account.entity.Account;
 import com.example.monoproj.account.service.AccountService;
 import com.example.monoproj.account_profile.entity.AccountProfile;
 import com.example.monoproj.account_profile.service.AccountProfileService;
+import com.example.monoproj.config.FrontendConfig;
 import com.example.monoproj.kakao_authentication.controller.request_form.AccessTokenRequestForm;
 import com.example.monoproj.kakao_authentication.service.KakaoAuthenticationService;
 import com.example.monoproj.redis_cache.service.RedisCacheService;
@@ -27,6 +28,7 @@ public class KakaoAuthenticationController {
     final private AccountService accountService;
     final private AccountProfileService accountProfileService;
     final private RedisCacheService redisCacheService;
+    final private FrontendConfig frontendConfig;
 
     @GetMapping("/request-login-url")
     public String requestGetLoginLink() {
@@ -70,6 +72,7 @@ public class KakaoAuthenticationController {
 //            String redirectUri = "http://localhost/kakao-authentication/callback?userToken=" + userToken;
 //            response.sendRedirect(redirectUri);
 
+            String origin = frontendConfig.getOrigins().get(0);
             String htmlResponse = """
             <html>
               <body>
@@ -77,12 +80,12 @@ public class KakaoAuthenticationController {
                   window.opener.postMessage({
                     accessToken: '%s',
                     user: { name: '%s', email: '%s' }
-                  }, 'http://localhost');
+                  }, '%s');
                   window.close();
                 </script>
               </body>
             </html>
-            """.formatted(userToken, nickname, email);
+            """.formatted(userToken, nickname, email, origin);
 
             response.setContentType("text/html;charset=UTF-8");
             response.getWriter().write(htmlResponse);

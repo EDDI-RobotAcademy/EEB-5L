@@ -74,13 +74,13 @@ const App: React.FC = () => {
                         >
                             <MenuItem
                                 component="a"
-                                href="http://localhost/kakao-authentication/login"
+                                href="http://192.168.0.122/kakao-authentication/login"
                             >
                                 카카오 로그인
                             </MenuItem>
                             <MenuItem
                                 component="a"
-                                href="http://localhost/google-authentication/login"
+                                href="http://192.168.0.122/google-authentication/login"
                             >
                                 구글 로그인
                             </MenuItem>

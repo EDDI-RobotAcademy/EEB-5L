@@ -6,7 +6,7 @@ export const mfConfig = {
     googleAuthenticationApp: "googleAuthenticationApp@http://localhost:3100/remoteEntry.js",
     diceGameApp: "diceGameApp@http://localhost:3102/remoteEntry.js",
     vueBoardApp: `vueBoardApp@${process.env.VUE_BOARD_APP}/remoteEntry.js`,
-    authenticationApp: "authenticationApp@http://localhost:4001/remoteEntry.js"
+    authenticationApp: "authenticationApp@http://localhost:4010/remoteEntry.js"
 
 
   },
