@@ -9,6 +9,7 @@ import mitt from 'mitt';
 const KakaoAuthenticationApp = lazy(() => import("kakaoAuthenticationApp/App"));
 const GoogleAuthenticationApp = lazy(() => import("googleAuthenticationApp/App"));
 const NavigationBarApp = lazy(() => import("navigationBarApp/App"));
+const AuthenticationApp=lazy(()=>import("authenticationApp/App"));
 // const HtmlCssTestApp = lazy(() => import("htmlCssTestApp/App"));
 // const JavascriptTestApp = lazy(() => import("javascriptTestApp/App"));
 // const ReactTestApp = lazy(() => import("reactTestApp/App"));
@@ -46,6 +47,7 @@ const App = () => {
                     <Route path="/vtest" element={<VueBoardAppWrapper eventBus={eventBus}/>} />
                     <Route path="/dice-game" element={<DiceGameAppWrapper />} />
                     {/*<Route path="/test-game" element={<TestGameAppWrapper />} />*/}
+                    <Route path="/authentication-app" element={<AuthenticationApp />} />
                 </Routes>
             </Suspense>
         </BrowserRouter>

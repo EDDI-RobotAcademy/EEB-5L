@@ -9,9 +9,9 @@ import lombok.ToString;
 @ToString
 @RequiredArgsConstructor
 public class CreateSampleBoardRequestForm {
-    private String title;
-    private String content;
-    private String nickname;
+    final private String title;
+    final private String content;
+    final private String nickname;
 
     public CreateSampleBoardRequest toCreateBoardRequest() {
         return new CreateSampleBoardRequest(

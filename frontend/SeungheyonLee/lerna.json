@@ -7,6 +7,7 @@
     "navigation-bar-app",
     "google-authentication",
     "dice-game-app",
-    "vue-board-app2"
+    "vue-board-app2",
+    "authentication-app"
   ]
 }

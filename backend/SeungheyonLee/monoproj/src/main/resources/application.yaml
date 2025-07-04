@@ -47,3 +47,13 @@ google:
   redirect-uri: ${GOOGLE_REDIRECT_URI}
   token-request-uri: ${GOOGLE_TOKEN_REQUEST_URI}
   user-info-request-uri: ${GOOGLE_USER_INFO_REQUEST_URI}
+
+github:
+  login-url: ${GITHUB_LOGIN_URL}
+  client-id: ${GITHUB_CLIENT_ID}
+  client-secret: ${GITHUB_CLIENT_SECRET}
+  redirect-uri: ${GITHUB_REDIRECT_URI}
+  token-request-uri: ${GITHUB_TOKEN_REQUEST_URI}
+  user-info-request-uri: ${GITHUB_USER_INFO_REQUEST_URI}
+
+debug: true
