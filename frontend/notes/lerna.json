@@ -3,11 +3,6 @@
   "version": "independent",
   "packages": [
     "html-container",
-    "navigation-bar-app",
-    "vue-board-app",
-    "dice-game-app",
-    "authentication-app",
-    "game-chip-app",
-    "cart-app"
+    "navigation-bar-app"
   ]
 }

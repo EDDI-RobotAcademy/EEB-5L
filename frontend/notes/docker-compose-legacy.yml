@@ -1,0 +1,62 @@
+version: "3"
+
+services:
+  html-container:
+    build:
+      context: ./html-container
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
+  html-css-test:
+    build:
+      context: ./html-css-test-app
+    ports:
+      - "3001:3001"
+    networks:
+      - app-network
+
+  javascript-test:
+    build:
+      context: ./javascript-test-app
+    ports:
+      - "3002:3002"
+    networks:
+      - app-network
+
+  kakao-authentication:
+    build:
+      context: ./kakao-authentication
+    ports:
+      - "3003:3003"
+    networks:
+      - app-network
+
+#  vuetify-board-app:
+#    build:
+#      context: ./vuetify-tailwind-board-app
+#    ports:
+#      - "3004:3004"
+#    networks:
+#      - app-network
+
+  navigation-bar:
+    build:
+      context: ./navigation-bar-app
+    ports:
+      - "3005:3005"
+    networks:
+      - app-network
+
+  react-test:
+    build:
+      context: ./react-test-app
+    ports:
+      - "3006:3006"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

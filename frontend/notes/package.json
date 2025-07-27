@@ -3,15 +3,11 @@
   "private": true,
   "workspaces": [
     "html-container",
-    "navigation-bar-app",
-    "vue-board-app",
-    "dice-game-app",
-    "authentication-app",
-    "game-chip-app",
-    "cart-app"
+    "navigation-bar-app"
   ],
   "scripts": {
-    "start": "lerna run start --parallel"
+    "start": "lerna run start --parallel",
+    "build": "lerna run build --parallel"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

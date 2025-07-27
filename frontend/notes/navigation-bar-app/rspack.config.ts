@@ -30,7 +30,8 @@ export default defineConfig({
     // You need to set a unique value that is not equal to other applications
     uniqueName: "navigation_bar_app",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:3005/",
+    // publicPath: "http://localhost:3005/",
+    publicPath: "auto",
   },
 
   experiments: {
