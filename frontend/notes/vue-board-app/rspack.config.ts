@@ -42,39 +42,34 @@ export default defineConfig({
     //   "Access-Control-Allow-Methods": "GET,OPTIONS",
     //   "Access-Control-Allow-Headers": "*",
     // },
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,OPTIONS",
-      "Access-Control-Allow-Headers": "*",
+    setupMiddlewares: (middlewares, devServer) => {
+      const envOrigins = process.env.MFE_CORS_ORIGIN ?? "";
+      const allowedOrigins = envOrigins
+          .split(",")
+          .map(o => o.trim())
+          .filter(Boolean);
+
+      if (devServer?.app) {
+        devServer.app.use((req, res, next) => {
+          // const origin = req.headers.origin;
+          // if (origin && allowedOrigins.includes(origin)) {
+          //   res.setHeader("Access-Control-Allow-Origin", origin);
+          // }
+
+          res.setHeader("Access-Control-Allow-Origin", "*");
+          res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,POST,PUT,DELETE");
+          res.setHeader("Access-Control-Allow-Headers", "*");
+
+          if (req.method === "OPTIONS") {
+            res.sendStatus(200);
+          } else {
+            next();
+          }
+        });
+      }
+
+      return middlewares;
     },
-    // setupMiddlewares: (middlewares, devServer) => {
-    //   const envOrigins = process.env.MFE_CORS_ORIGIN ?? "";
-    //   const allowedOrigins = envOrigins
-    //       .split(",")
-    //       .map(o => o.trim())
-    //       .filter(Boolean);
-    //
-    //   if (devServer?.app) {
-    //     devServer.app.use((req, res, next) => {
-    //       // const origin = req.headers.origin;
-    //       // if (origin && allowedOrigins.includes(origin)) {
-    //       //   res.setHeader("Access-Control-Allow-Origin", origin);
-    //       // }
-    //
-    //       res.setHeader("Access-Control-Allow-Origin", "*");
-    //       res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,POST,PUT,DELETE");
-    //       res.setHeader("Access-Control-Allow-Headers", "*");
-    //
-    //       if (req.method === "OPTIONS") {
-    //         res.sendStatus(200);
-    //       } else {
-    //         next();
-    //       }
-    //     });
-    //   }
-    //
-    //   return middlewares;
-    // },
   },
 
   output: {
@@ -82,7 +77,9 @@ export default defineConfig({
     uniqueName: "vue_board_app",
     // publicPath must be configured if using manifest
     // publicPath: `${process.env.MFE_PUBLIC_SERVICE}:3200/`,
-    publicPath: "auto",
+    // publicPath: "auto",
+    // publicPath: '/vue-board/',
+    publicPath: `${process.env.MFE_PUBLIC_SERVICE}/`,
   },
 
   experiments: {

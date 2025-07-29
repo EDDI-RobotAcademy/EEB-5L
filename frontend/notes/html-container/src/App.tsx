@@ -14,7 +14,7 @@ import mitt from 'mitt';
 // const ReactTestApp = lazy(() => import("reactTestApp/App"));
 // const RecoilBoardApp = lazy(() => import("recoilBoardApp/App"))
 const NavigationBarApp = lazy(() => import("navigationBarApp/App"));
-// const AuthenticationApp = lazy(() => import("authenticationApp/App"));
+const AuthenticationApp = lazy(() => import("authenticationApp/App"));
 // const CartApp = lazy(() => import("cartApp/App"));
 
 // import VuetifyTailwindBoardAppWrapper from "./VuetifyTailwindBoardAppWrapper";
@@ -52,7 +52,7 @@ const App = () => {
 
                     <Route path="/vue-board/*" element={<VueBoardAppWrapper eventBus={eventBus}/>} />
                     {/*<Route path="/dice-game" element={<DiceGameAppWrapper />} />*/}
-                    {/*<Route path="/authentication/*" element={<AuthenticationApp />} />*/}
+                    <Route path="/authentication/*" element={<AuthenticationApp />} />
                     {/*<Route path="/game-chip/*" element={<VueGameChipWrapper eventBus={eventBus}/>} />*/}
                     {/*<Route path="/cart/*" element={<CartApp />} />*/}
                 </Routes>

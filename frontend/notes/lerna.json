@@ -4,6 +4,7 @@
   "packages": [
     "html-container",
     "navigation-bar-app",
-    "vue-board-app"
+    "vue-board-app",
+    "authentication-app"
   ]
 }
