@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "html-container",
-    "navigation-bar-app"
+    "navigation-bar-app",
+    "vue-board-app"
   ],
   "scripts": {
     "start": "lerna run start --parallel",

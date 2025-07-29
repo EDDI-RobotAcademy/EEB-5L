@@ -19,7 +19,7 @@ const NavigationBarApp = lazy(() => import("navigationBarApp/App"));
 
 // import VuetifyTailwindBoardAppWrapper from "./VuetifyTailwindBoardAppWrapper";
 // import VTestWrapper from "./VTestWrapper.tsx";
-// import VueBoardAppWrapper from "./VueBoardWrapper.tsx";
+import VueBoardAppWrapper from "./VueBoardWrapper.tsx";
 // import DiceGameAppWrapper from "./DiceGameAppWrapper.tsx";
 // import VueGameChipWrapper from "./VueGameChipWrapper.tsx";
 
@@ -50,7 +50,7 @@ const App = () => {
                     {/*<Route path="/recoil-board/*" element={<RecoilBoardApp />} />*/}
                     {/*<Route path="/vtest/*" element={<VTestWrapper eventBus={eventBus}/>} />*/}
 
-                    {/*<Route path="/vue-board/*" element={<VueBoardAppWrapper eventBus={eventBus}/>} />*/}
+                    <Route path="/vue-board/*" element={<VueBoardAppWrapper eventBus={eventBus}/>} />
                     {/*<Route path="/dice-game" element={<DiceGameAppWrapper />} />*/}
                     {/*<Route path="/authentication/*" element={<AuthenticationApp />} />*/}
                     {/*<Route path="/game-chip/*" element={<VueGameChipWrapper eventBus={eventBus}/>} />*/}

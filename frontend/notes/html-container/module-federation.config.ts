@@ -11,7 +11,7 @@ export const mfConfig = {
     // recoilBoardApp: "recoilBoardApp@http://localhost:3101/remoteEntry.js",
     // vtestApp: `vtestApp@${process.env.VTEST_APP}/remoteEntry.js`,
     navigationBarApp: `navigationBarApp@${process.env.REACT_NAVIGATION_APP}/remoteEntry.js`,
-    // vueBoardApp: `vueBoardApp@${process.env.VUE_BOARD_APP}/remoteEntry.js`,
+    vueBoardApp: `vueBoardApp@${process.env.VUE_BOARD_APP}/remoteEntry.js`,
     // diceGameApp: "diceGameApp@http://localhost:4000/remoteEntry.js",
     // authenticationApp: "authenticationApp@http://localhost:4001/remoteEntry.js",
     // gameChipApp: `gameChipApp@${process.env.VUE_GAME_CHIP_APP}/remoteEntry.js`,
