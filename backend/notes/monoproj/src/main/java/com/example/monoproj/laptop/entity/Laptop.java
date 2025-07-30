@@ -24,6 +24,9 @@ public class Laptop {
 
     private int price;
 
+    @Embedded
+    private LaptopSpecification specification;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id", nullable = false)
     private Account account;
@@ -35,10 +38,11 @@ public class Laptop {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public Laptop(String title, String description, int price, Account account) {
+    public Laptop(String title, String description, int price, Account account, LaptopSpecification specification) {
         this.title = title;
         this.description = description;
         this.price = price;
         this.account = account;
+        this.specification = specification;
     }
 }
