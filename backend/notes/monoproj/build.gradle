@@ -31,6 +31,10 @@ dependencies {
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.13.4'
     implementation 'me.paulschwarz:spring-dotenv:3.0.0'
 
+    // AWS SDK for S3
+    implementation platform('software.amazon.awssdk:bom:2.25.1')
+    implementation 'software.amazon.awssdk:s3'
+
     // H2 Database (테스트용 인메모리 DB)
     runtimeOnly 'com.h2database:h2'
     testImplementation 'com.h2database:h2'

@@ -2,6 +2,7 @@
   "name": "vue-board-app",
   "version": "0.0.1",
   "scripts": {
+    "clean": "rimraf dist",
     "build": "NODE_ENV=production rspack build",
     "build:dev": "NODE_ENV=development rspack build",
     "build:start": "cd dist && rspack serve",
@@ -19,6 +20,7 @@
     "css-loader": "^7.1.2",
     "postcss": "^8.2.1",
     "postcss-loader": "^8.0.0",
+    "rimraf": "^6.0.1",
     "tailwindcss": "^4.0.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3",

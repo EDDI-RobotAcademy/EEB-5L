@@ -11,7 +11,8 @@
     "cart-app"
   ],
   "scripts": {
-    "start": "lerna run start --parallel"
+    "start": "lerna run start --parallel",
+    "build": "lerna run build --parallel"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

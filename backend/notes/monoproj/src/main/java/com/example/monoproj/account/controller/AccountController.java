@@ -7,6 +7,7 @@ import com.example.monoproj.account_profile.service.AccountProfileService;
 import com.example.monoproj.redis_cache.service.RedisCacheService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class AccountController {
     private final AccountProfileService accountProfileService;
 
     @PostMapping("/register")
+    @Transactional
     public String register(@RequestBody RegisterNormalAccountRequestForm requestForm) {
         log.info("회원 가입 요청: requestForm={}", requestForm);
 

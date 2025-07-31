@@ -51,11 +51,12 @@ export default defineConfig({
 
       if (devServer?.app) {
         devServer.app.use((req, res, next) => {
-          const origin = req.headers.origin;
-          if (origin && allowedOrigins.includes(origin)) {
-            res.setHeader("Access-Control-Allow-Origin", origin);
-          }
+          // const origin = req.headers.origin;
+          // if (origin && allowedOrigins.includes(origin)) {
+          //   res.setHeader("Access-Control-Allow-Origin", origin);
+          // }
 
+          res.setHeader("Access-Control-Allow-Origin", "*");
           res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,POST,PUT,DELETE");
           res.setHeader("Access-Control-Allow-Headers", "*");
 
@@ -75,7 +76,10 @@ export default defineConfig({
     // You need to set a unique value that is not equal to other applications
     uniqueName: "vue_board_app",
     // publicPath must be configured if using manifest
-    publicPath: `${process.env.MFE_PUBLIC_SERVICE}:3200/`,
+    // publicPath: `${process.env.MFE_PUBLIC_SERVICE}:3200/`,
+    // publicPath: "auto",
+    // publicPath: '/vue-board/',
+    publicPath: `${process.env.MFE_PUBLIC_SERVICE}/`,
   },
 
   experiments: {
