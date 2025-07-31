@@ -64,7 +64,8 @@ export default defineConfig({
     // You need to set a unique value that is not equal to other applications
     uniqueName: "dice_game_app",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:4000/",
+    // publicPath: "http://localhost:4000/",
+    publicPath: `${process.env.MFE_PUBLIC_SERVICE}/`,
   },
 
   experiments: {

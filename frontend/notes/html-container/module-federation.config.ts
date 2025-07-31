@@ -12,10 +12,10 @@ export const mfConfig = {
     // vtestApp: `vtestApp@${process.env.VTEST_APP}/remoteEntry.js`,
     navigationBarApp: `navigationBarApp@${process.env.REACT_NAVIGATION_APP}/remoteEntry.js`,
     vueBoardApp: `vueBoardApp@${process.env.VUE_BOARD_APP}/remoteEntry.js`,
-    // diceGameApp: "diceGameApp@http://localhost:4000/remoteEntry.js",
+    diceGameApp: `diceGameApp@${process.env.SVELTE_DICE_GAME_APP}/remoteEntry.js`,
     authenticationApp: `authenticationApp@${process.env.AUTHENTICATION_APP}/remoteEntry.js`,
-    // gameChipApp: `gameChipApp@${process.env.VUE_GAME_CHIP_APP}/remoteEntry.js`,
-    // cartApp: "cartApp@http://localhost:4322/remoteEntry.js",
+    gameChipApp: `gameChipApp@${process.env.VUE_GAME_CHIP_APP}/remoteEntry.js`,
+    cartApp: `cartApp@${process.env.REACT_CART_APP}/remoteEntry.js`,
   },
   shared: {
     react: { singleton: true, requiredVersion: "^18.2.0" },

@@ -15,13 +15,13 @@ import mitt from 'mitt';
 // const RecoilBoardApp = lazy(() => import("recoilBoardApp/App"))
 const NavigationBarApp = lazy(() => import("navigationBarApp/App"));
 const AuthenticationApp = lazy(() => import("authenticationApp/App"));
-// const CartApp = lazy(() => import("cartApp/App"));
+const CartApp = lazy(() => import("cartApp/App"));
 
 // import VuetifyTailwindBoardAppWrapper from "./VuetifyTailwindBoardAppWrapper";
 // import VTestWrapper from "./VTestWrapper.tsx";
 import VueBoardAppWrapper from "./VueBoardWrapper.tsx";
-// import DiceGameAppWrapper from "./DiceGameAppWrapper.tsx";
-// import VueGameChipWrapper from "./VueGameChipWrapper.tsx";
+import DiceGameAppWrapper from "./DiceGameAppWrapper.tsx";
+import VueGameChipWrapper from "./VueGameChipWrapper.tsx";
 
 const eventBus = mitt();
 
@@ -51,10 +51,10 @@ const App = () => {
                     {/*<Route path="/vtest/*" element={<VTestWrapper eventBus={eventBus}/>} />*/}
 
                     <Route path="/vue-board/*" element={<VueBoardAppWrapper eventBus={eventBus}/>} />
-                    {/*<Route path="/dice-game" element={<DiceGameAppWrapper />} />*/}
+                    <Route path="/dice-game" element={<DiceGameAppWrapper />} />
                     <Route path="/authentication/*" element={<AuthenticationApp />} />
-                    {/*<Route path="/game-chip/*" element={<VueGameChipWrapper eventBus={eventBus}/>} />*/}
-                    {/*<Route path="/cart/*" element={<CartApp />} />*/}
+                    <Route path="/game-chip/*" element={<VueGameChipWrapper eventBus={eventBus}/>} />
+                    <Route path="/cart/*" element={<CartApp />} />
                 </Routes>
             </Suspense>
         </BrowserRouter>

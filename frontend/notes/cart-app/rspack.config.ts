@@ -30,7 +30,8 @@ export default defineConfig({
     // You need to set a unique value that is not equal to other applications
     uniqueName: "cart_app",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:4322/",
+    // publicPath: "http://localhost:4322/",
+    publicPath: `${process.env.MFE_PUBLIC_SERVICE}/`,
   },
 
   experiments: {

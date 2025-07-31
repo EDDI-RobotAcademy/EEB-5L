@@ -57,7 +57,8 @@ export default defineConfig({
     // You need to set a unique value that is not equal to other applications
     uniqueName: "game_chip_app",
     // publicPath must be configured if using manifest
-    publicPath: "http://localhost:4321/",
+    // publicPath: "http://localhost:4321/",
+    publicPath: `${process.env.MFE_PUBLIC_SERVICE}/`,
   },
 
   experiments: {
