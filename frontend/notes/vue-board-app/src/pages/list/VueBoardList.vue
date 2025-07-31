@@ -13,20 +13,22 @@
 <!--        class="elevation-1"-->
 <!--        item-value="boardId"-->
 <!--    />-->
-    <v-data-table
-        v-model:items-per-page="perPage"
-        :headers="headerTitle"
-        :items="pagedItems"
-        class="elevation-1"
-        @click:row="readRow"
-        item-value="boardId"
-    />
-    <v-pagination
-        v-model="pagination.page"
-        :length="Math.ceil(boardStore.boardList.length / perPage)"
-        color="primary"
-        @input="updateItems"
-    />
+      <v-data-table
+              v-model:items-per-page="perPage"
+              :headers="headerTitle"
+              :items="boardStore.boardList"
+              class="elevation-1"
+              item-value="boardId"
+              @click:row="readRow"
+              hide-default-footer
+      />
+
+      <v-pagination
+              v-model="pagination.page"
+              :length="totalPages"
+              color="primary"
+              @update:modelValue="updateItems"
+      />
   </v-container>
 </template>
 
@@ -53,12 +55,8 @@ const headerTitle = [
   { title: '작성일자', align: 'end', key: 'createDate' }
 ]
 
-const pagedItems = computed(() => {
-  const startIdx = (pagination.value.page - 1) * perPage.value
-  const endIdx = startIdx + perPage.value
-  console.log('boardStore.boardList:', boardStore.boardList)
-  return boardStore.boardList.slice(startIdx, endIdx)
-})
+const pagedItems = computed(() => boardStore.boardList)
+const totalPages = computed(() => boardStore.totalPages)
 
 const readRow = (_event: any, { item }: any) => {
   console.log('_event:', _event)
@@ -73,11 +71,11 @@ const readRow = (_event: any, { item }: any) => {
 }
 
 const updateItems = () => {
-  boardStore.requestBoardListToSpring(pagination.value.page, perPage.value)
+    boardStore.requestBoardListToSpring(pagination.value.page, perPage.value)
 }
 
 onMounted(() => {
-  boardStore.requestBoardListToSpring(pagination.value.page, perPage.value)
+    boardStore.requestBoardListToSpring(pagination.value.page, perPage.value)
 })
 </script>
 

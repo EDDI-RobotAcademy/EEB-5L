@@ -9,10 +9,12 @@ export interface Board {
 
 export interface BoardState {
     boardList: Board[]
+    totalPages: number
     board: Board | null
 }
 
-export const boardState = () => ({
+export const boardState = (): BoardState => ({
     boardList: [],
-    board: null,
+    totalPages: 1,
+    board: null
 })

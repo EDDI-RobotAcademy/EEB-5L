@@ -1,7 +1,7 @@
 import React, {lazy, Suspense, useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, CssBaseline } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import mitt from 'mitt';
@@ -36,6 +36,7 @@ const App = () => {
 
     return (
         <BrowserRouter>
+            <CssBaseline />
             <Suspense fallback={<CircularProgress />}>
                 <NavigationBarApp />
 

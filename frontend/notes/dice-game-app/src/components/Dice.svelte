@@ -26,14 +26,7 @@
 
     export let gameId: number;
 
-    const texturePaths = [
-        Side3, // +X → 3
-        Side4, // -X → 4
-        Side1, // +Y → 1 (TOP)
-        Side6, // -Y → 6
-        Side2, // +Z → 2
-        Side5  // -Z → 5
-    ];
+    const texturePaths = [Side3, Side4, Side1, Side6, Side2, Side5];
 
     const faceNormalToValue: { [key: string]: number } = {
         '0,1,0': 1,
@@ -48,6 +41,50 @@
         const [x, y, z] = key.split(',').map(Number);
         return new CANNON.Vec3(x, y, z);
     });
+
+    function styleObjectToString(styleObj: Record<string, string | number>): string {
+        return Object.entries(styleObj)
+            .map(([key, value]) => {
+                const kebabKey = key.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase());
+                return `${kebabKey}: ${value}`;
+            })
+            .join('; ');
+    }
+
+    const containerStyle = {
+        height: 'calc(100vh - 64px)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden',
+        position: 'relative',
+        background: '#000',
+    };
+
+    const buttonStyle = {
+        position: 'absolute',
+        top: '20px',
+        left: '20px',
+        padding: '10px 20px',
+        fontSize: '16px',
+        backgroundColor: '#fff',
+        color: '#000',
+        zIndex: 10,
+        cursor: 'pointer',
+        boxSizing: 'border-box',
+    };
+
+    const resultStyle = {
+        position: 'absolute',
+        top: '20px',
+        right: '20px',
+        fontSize: '24px',
+        background: 'rgba(0, 0, 0, 0.7)',
+        color: 'white',
+        padding: '10px 16px',
+        borderRadius: '8px',
+        zIndex: 10,
+    };
 
     function getTopFaceIndex(): number {
         const worldUp = new CANNON.Vec3(0, 1, 0);
@@ -69,9 +106,10 @@
     }
 
     function isDiceStopped() {
-        const linear = diceBody.velocity.length();
-        const angular = diceBody.angularVelocity.length();
-        return linear < 0.1 && angular < 0.1;
+        return (
+            diceBody.velocity.length() < 0.1 &&
+            diceBody.angularVelocity.length() < 0.1
+        );
     }
 
     function initThree() {
@@ -144,11 +182,7 @@
 
     async function sendResultToServer(result: number) {
         const userToken = localStorage.getItem('userToken');
-
-        if (!userToken || !gameId) {
-            console.warn('❗ userToken 또는 gameId 누락');
-            return;
-        }
+        if (!userToken || !gameId) return;
 
         try {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/dice/save-roll-result`, {
@@ -157,18 +191,12 @@
                     'Authorization': `Bearer ${userToken}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    gameId,
-                    number: result
-                })
+                body: JSON.stringify({ gameId, number: result })
             });
 
             const ok = await response.json();
-            if (ok) {
-                console.log('✅ 주사위 결과 전송 성공');
-            } else {
-                console.warn('⚠ 주사위 결과 저장 실패');
-            }
+            if (ok) console.log('✅ 주사위 결과 전송 성공');
+            else console.warn('⚠ 주사위 결과 저장 실패');
         } catch (error) {
             console.error('전송 실패:', error);
         }
@@ -176,7 +204,6 @@
 
     function animate(time: number) {
         requestAnimationFrame(animate);
-
         const dt = lastTime ? (time - lastTime) / 1000 : 0;
         lastTime = time;
 
@@ -188,7 +215,6 @@
             stoppedFrameCount++;
             if (stoppedFrameCount >= 15 && result === 0) {
                 result = getTopFaceIndex();
-                console.log('🎲 주사위 눈:', result);
                 if (!hasSentResult) {
                     sendResultToServer(result);
                     hasSentResult = true;
@@ -224,59 +250,9 @@
     });
 </script>
 
-<style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-        background: #000;
-    }
-
-    .container {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        position: relative;
-        background: #000;
-    }
-
-    canvas {
-        display: block;
-        max-width: 100%;
-        max-height: 100%;
-        user-select: none;
-    }
-
-    button {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        padding: 10px 20px;
-        font-size: 16px;
-        z-index: 10;
-        cursor: pointer;
-    }
-
-    .result {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 24px;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 10px 16px;
-        border-radius: 8px;
-        z-index: 10;
-    }
-</style>
-
-<div class="container" bind:this={container}>
-    <button on:click={rollDice}>🎲 주사위 굴리기</button>
+<div bind:this={container} style={styleObjectToString(containerStyle)}>
+    <button on:click={rollDice} style={styleObjectToString(buttonStyle)}>🎲 주사위 굴리기</button>
     {#if result > 0}
-        <div class="result">결과: {result}</div>
+        <div style={styleObjectToString(resultStyle)}>결과: {result}</div>
     {/if}
 </div>

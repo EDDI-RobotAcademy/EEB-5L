@@ -25,7 +25,13 @@ const DiceGameAppWrapper: React.FC = () => {
         };
     }, []);
 
-    return <div ref={containerRef} />;
+    // return <div ref={containerRef} />;
+
+    return (
+        <div style={{ height: 'calc(100vh - 64px)', overflow: 'hidden' }}>
+            <div ref={containerRef} style={{ height: '100%' }} />
+        </div>
+    )
 };
 
 export default DiceGameAppWrapper;

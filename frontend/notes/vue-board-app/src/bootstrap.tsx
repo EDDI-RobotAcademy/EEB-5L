@@ -35,6 +35,16 @@ export const vueBoardAppMount = (el: string | Element, eventBus: any) => {
     shadowAppRoot.classList.add('v-application', 'v-theme--light');
     shadowRoot.appendChild(shadowAppRoot);
 
+    container.style.height = '100%';
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+
+    shadowAppRoot.style.height = '100%';
+    shadowAppRoot.style.minHeight = '100%';
+    shadowAppRoot.style.display = 'flex';
+    shadowAppRoot.style.flexDirection = 'column';
+    shadowAppRoot.style.flex = '1 1 auto';
+
     // Vuetify 스타일 CDN 주입
     injectVuetifyCssIntoShadow(shadowRoot);
 

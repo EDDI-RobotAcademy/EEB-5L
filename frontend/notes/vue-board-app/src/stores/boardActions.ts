@@ -8,7 +8,9 @@ export const boardActions = {
                 params: { page, perPage }
             })
             this.boardList = res.data.boardList
+            this.totalPages = res.data.totalPages
             console.log('res.data.boardList:', res.data.boardList)
+            console.log('res.data:', res.data)
         } catch (error) {
             console.error('requestBoardListToSpring():', error)
             throw error
