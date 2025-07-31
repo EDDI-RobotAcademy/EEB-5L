@@ -8,6 +8,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CasinoOutlined from '@mui/icons-material/CasinoOutlined'
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import axiosInstance from "./utility/AxiosInst.ts";
 
 const App: React.FC = () => {
@@ -76,6 +77,14 @@ const App: React.FC = () => {
                     startIcon={<ForumIcon />}
                 >
                     V게시판
+                </Button>
+                <Button
+                    color="inherit"
+                    component={Link}
+                    to="/dice-game"
+                    startIcon={<SportsEsportsIcon />}
+                >
+                    미니게임
                 </Button>
                 <Button
                     color="inherit"

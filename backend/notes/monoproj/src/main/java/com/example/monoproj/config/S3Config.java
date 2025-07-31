@@ -17,7 +17,7 @@ public class S3Config {
     public S3Presigner s3Presigner() {
         return S3Presigner.builder()
                 .region(Region.of(region))
-                .credentialsProvider(ProfileCredentialsProvider.create()) // 또는 환경에 맞는 provider
+                .credentialsProvider(ProfileCredentialsProvider.create())
                 .build();
     }
 }
