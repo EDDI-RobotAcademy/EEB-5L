@@ -105,33 +105,40 @@
     </v-row>
 
     <!-- 썸네일 업로드 -->
-    <v-row>
-        <v-col cols="12">
-            <div
-                    :style="textfieldStyle(hoverThumbnail)"
-                    @mouseover="hoverThumbnail = true"
-                    @mouseleave="hoverThumbnail = false"
-                    @click="onThumbnailClick"
-            >
-                <label style="display: block; margin-bottom: 4px;">썸네일 이미지 업로드 (1개)</label>
+      <v-row>
+          <v-col cols="12">
+              <div
+                      :style="textfieldStyle(hoverThumbnail)"
+                      @mouseover="hoverThumbnail = true"
+                      @mouseleave="hoverThumbnail = false"
+                      class="thumbnail-upload-wrapper"
+              >
+                  <label :style="labelStyle">
+                      썸네일 이미지 업로드 (1개)
+                  </label>
 
-                <input
-                        ref="thumbnailInput"
-                        type="file"
-                        accept="image/*"
-                        style="display: none"
-                        @change="onThumbnailSelected"
-                />
+                  <div
+                          :style="thumbnailUploaderStyle"
+                          @click="onFileInputClick"
+                  >
+                      <v-icon icon="mdi-camera" class="camera-icon" />
+                      <span :style="thumbnailFileLabelStyle">
+          {{ thumbnailInputValue?.name || '파일 선택' }}
+        </span>
+                  </div>
 
-                <div :style="thumbnailPreviewStyle">
-                    <span v-if="!thumbnailFile">파일을 선택하세요</span>
-                    <span v-else>{{ thumbnailFile.name }}</span>
-                </div>
-            </div>
-        </v-col>
-    </v-row>
+                  <input
+                          ref="fileInputRef"
+                          type="file"
+                          accept="image/*"
+                          @change="onFileChange"
+                          style="display: none"
+                  />
+              </div>
+          </v-col>
+      </v-row>
 
-    <!-- 추가 이미지 업로드 -->
+      <!-- 추가 이미지 업로드 -->
     <v-row>
       <v-col cols="12">
         <div
@@ -238,6 +245,13 @@ const price = ref(0)
 const thumbnailInputValue = ref<File[] | null>(null)
 const thumbnailFile = ref<File | null>(null)
 const thumbnailUrl = ref('')
+const fileInputRef = ref<HTMLInputElement | null>(null)
+
+const thumbnailFileLabelStyle = {
+    fontSize: '14px',
+    color: '#555',
+    marginLeft: '8px', // ← 여기 추가
+}
 
 const addImageInputValue = ref<File[] | null>(null)
 const imageFiles = ref<File[]>([])
@@ -304,10 +318,16 @@ const fileInputStyle = {
     backgroundColor: '#fafafa',
 }
 
+function onFileInputClick() {
+    fileInputRef.value?.click()
+}
+
 function onFileChange(event: Event) {
     const target = event.target as HTMLInputElement
     const file = target.files?.[0] || null
     thumbnailInputValue.value = file
+    thumbnailFile.value = file
+    thumbnailUrl.value = file ? URL.createObjectURL(file) : ''
 }
 
 const labelStyle = {
