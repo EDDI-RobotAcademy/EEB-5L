@@ -8,6 +8,7 @@
     "dice-game-app",
     "authentication-app",
     "game-chip-app",
-    "cart-app"
+    "cart-app",
+    "laptop-app"
   ]
 }

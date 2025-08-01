@@ -22,6 +22,7 @@ const CartApp = lazy(() => import("cartApp/App"));
 import VueBoardAppWrapper from "./VueBoardWrapper.tsx";
 import DiceGameAppWrapper from "./DiceGameAppWrapper.tsx";
 import VueGameChipWrapper from "./VueGameChipWrapper.tsx";
+import VueLaptopAppWrapper from "./VueLaptopWrapper.tsx";
 
 const eventBus = mitt();
 
@@ -56,6 +57,7 @@ const App = () => {
                     <Route path="/authentication/*" element={<AuthenticationApp />} />
                     <Route path="/game-chip/*" element={<VueGameChipWrapper eventBus={eventBus}/>} />
                     <Route path="/cart/*" element={<CartApp />} />
+                    <Route path="/laptop/*" element={<VueLaptopAppWrapper eventBus={eventBus}/>} />
                 </Routes>
             </Suspense>
         </BrowserRouter>
