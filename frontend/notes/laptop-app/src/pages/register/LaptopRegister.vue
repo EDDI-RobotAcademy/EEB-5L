@@ -106,26 +106,29 @@
 
     <!-- 썸네일 업로드 -->
     <v-row>
-      <v-col cols="12">
-        <div
-            :style="textfieldStyle(hoverThumbnail)"
-            @mouseover="hoverThumbnail = true"
-            @mouseleave="hoverThumbnail = false"
-        >
-          <label style="display: block; margin-bottom: 4px;">썸네일 이미지 업로드 (1개)</label>
-          <v-file-input
-              v-model="thumbnailInputValue"
-              prepend-icon="mdi-camera"
-              show-size
-              accept="image/*"
-              clearable
-              hide-details
-              density="compact"
-              :style="fileInputStyle"
-              class="custom-file-input"
-          />
-        </div>
-      </v-col>
+        <v-col cols="12">
+            <div
+                    :style="textfieldStyle(hoverThumbnail)"
+                    @mouseover="hoverThumbnail = true"
+                    @mouseleave="hoverThumbnail = false"
+                    @click="onThumbnailClick"
+            >
+                <label style="display: block; margin-bottom: 4px;">썸네일 이미지 업로드 (1개)</label>
+
+                <input
+                        ref="thumbnailInput"
+                        type="file"
+                        accept="image/*"
+                        style="display: none"
+                        @change="onThumbnailSelected"
+                />
+
+                <div :style="thumbnailPreviewStyle">
+                    <span v-if="!thumbnailFile">파일을 선택하세요</span>
+                    <span v-else>{{ thumbnailFile.name }}</span>
+                </div>
+            </div>
+        </v-col>
     </v-row>
 
     <!-- 추가 이미지 업로드 -->
@@ -273,11 +276,38 @@ watch(description, () => {
   autoGrow()
 })
 
+const hoverThumbnail = ref(false)
+
+const onThumbnailClick = () => {
+    (thumbnailInput.value as HTMLInputElement)?.click()
+}
+
+const thumbnailInput = ref<HTMLInputElement | null>(null)
+
+const onThumbnailSelected = (event: Event) => {
+    const target = event.target as HTMLInputElement
+    const file = target.files?.[0]
+    if (!file) return
+
+    thumbnailFile.value = file
+    thumbnailUrl.value = URL.createObjectURL(file)
+    thumbnailInputValue.value = [file] // 단일 파일
+}
+
 const fileInputStyle = {
-  boxShadow: 'none',
-  backgroundColor: 'transparent',
-  border: 'none',
-  padding: '0',
+    display: 'block',
+    width: '100%',
+    padding: '8px',
+    fontSize: '14px',
+    border: '1px dashed #aaa',
+    borderRadius: '6px',
+    backgroundColor: '#fafafa',
+}
+
+function onFileChange(event: Event) {
+    const target = event.target as HTMLInputElement
+    const file = target.files?.[0] || null
+    thumbnailInputValue.value = file
 }
 
 const labelStyle = {
