@@ -141,26 +141,34 @@
       <!-- 추가 이미지 업로드 -->
     <v-row>
       <v-col cols="12">
-        <div
-            :style="textfieldStyle(hoverAddImage)"
-            @mouseover="hoverAddImage = true"
-            @mouseleave="hoverAddImage = false"
-        >
-          <label style="display: block; margin-bottom: 4px;">추가 이미지 업로드 (여러 개 가능)</label>
-          <v-file-input
-              v-model="addImageInputValue"
-              multiple
-              prepend-icon="mdi-camera"
-              show-size
-              accept="image/*"
-              hint="추가 선택 시 기존 파일에 추가됩니다."
-              persistent-hint
-              clearable
-              hide-details
-              density="compact"
-              :style="fileInputInnerStyle"
-          />
-        </div>
+          <div
+                  :style="textfieldStyle(hoverAddImage)"
+                  @mouseover="hoverAddImage = true"
+                  @mouseleave="hoverAddImage = false"
+          >
+              <label style="display: block; margin-bottom: 4px;">추가 이미지 업로드 (여러 개 가능)</label>
+
+              <div
+                      :style="thumbnailUploaderStyle"
+                      @click="onAddImagesClick"
+              >
+                  <v-icon icon="mdi-camera" />
+                  <span :style="thumbnailFileLabelStyle">
+          {{ addImageInputValue && addImageInputValue.length > 0
+                      ? `${addImageInputValue.length}개 선택됨`
+                      : '파일 선택' }}
+        </span>
+              </div>
+
+              <input
+                      ref="addFileInputRef"
+                      type="file"
+                      multiple
+                      accept="image/*"
+                      @change="onAddFilesChange"
+                      style="display: none"
+              />
+          </div>
       </v-col>
     </v-row>
 
@@ -257,6 +265,19 @@ const addImageInputValue = ref<File[] | null>(null)
 const imageFiles = ref<File[]>([])
 const imagePreviews = ref<string[]>([])
 
+const hoverAddImage = ref(false)
+const addFileInputRef = ref<HTMLInputElement | null>(null)
+
+function onAddImagesClick() {
+    addFileInputRef.value?.click()
+}
+
+function onAddFilesChange(event: Event) {
+    const target = event.target as HTMLInputElement
+    if (!target.files) return
+    addImageInputValue.value = Array.from(target.files)
+}
+
 const hoverPrimary = ref(false)
 const hoverError = ref(false)
 
@@ -322,12 +343,11 @@ function onFileInputClick() {
     fileInputRef.value?.click()
 }
 
+
 function onFileChange(event: Event) {
     const target = event.target as HTMLInputElement
-    const file = target.files?.[0] || null
-    thumbnailInputValue.value = file
-    thumbnailFile.value = file
-    thumbnailUrl.value = file ? URL.createObjectURL(file) : ''
+    const files = target.files ? Array.from(target.files) : null
+    thumbnailInputValue.value = files
 }
 
 const labelStyle = {
@@ -433,14 +453,14 @@ onBeforeUnmount(() => {
 
 // 썸네일 파일 변경 시
 watch(thumbnailInputValue, (newFiles) => {
-  if (!newFiles || newFiles.length === 0) {
-    thumbnailFile.value = null
-    thumbnailUrl.value = ''
-    return
-  }
-  const file = newFiles[0]
-  thumbnailFile.value = file
-  thumbnailUrl.value = URL.createObjectURL(file)
+    if (!newFiles || newFiles.length === 0) {
+        thumbnailFile.value = null
+        thumbnailUrl.value = ''
+        return
+    }
+    const file = newFiles[0]
+    thumbnailFile.value = file
+    thumbnailUrl.value = URL.createObjectURL(file)
 })
 
 // 썸네일 제거
