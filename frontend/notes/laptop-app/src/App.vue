@@ -1,8 +1,9 @@
 <template>
-  <div class="mt-10 text-3xl mx-auto max-w-6xl">
-    <div>Name: laptop-app</div>
-    <div>Framework: vue3</div>
-  </div>
+  <v-app>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <script lang="ts">
