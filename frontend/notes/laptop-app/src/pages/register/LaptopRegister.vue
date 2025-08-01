@@ -329,6 +329,16 @@ const onThumbnailSelected = (event: Event) => {
     thumbnailInputValue.value = [file] // 단일 파일
 }
 
+const inputInnerStyle = {
+    width: '100%',
+    fontSize: '14px',
+    padding: '8px',
+    border: 'none',
+    outline: 'none',
+    backgroundColor: 'transparent',
+    boxSizing: 'border-box'
+}
+
 const fileInputStyle = {
     display: 'block',
     width: '100%',
