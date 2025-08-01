@@ -16,6 +16,7 @@ export const mfConfig = {
     authenticationApp: `authenticationApp@${process.env.AUTHENTICATION_APP}/remoteEntry.js`,
     gameChipApp: `gameChipApp@${process.env.VUE_GAME_CHIP_APP}/remoteEntry.js`,
     cartApp: `cartApp@${process.env.REACT_CART_APP}/remoteEntry.js`,
+    laptopApp: `laptopApp@${process.env.VUE_LAPTOP_APP}/remoteEntry.js`,
   },
   shared: {
     react: { singleton: true, requiredVersion: "^18.2.0" },

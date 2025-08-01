@@ -9,6 +9,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import CasinoOutlined from '@mui/icons-material/CasinoOutlined'
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import LaptopChromebookIcon from '@mui/icons-material/LaptopChromebook';
+
 import axiosInstance from "./utility/AxiosInst.ts";
 
 const App: React.FC = () => {
@@ -89,8 +91,16 @@ const App: React.FC = () => {
                 <Button
                     color="inherit"
                     component={Link}
+                    to="/laptop/list"
+                    startIcon={<LaptopChromebookIcon />}
+                >
+                    랩탑
+                </Button>
+                <Button
+                    color="inherit"
+                    component={Link}
                     to="/game-chip/list"
-                    startIcon={<CasinoOutlined />}  // 아이콘은 예시로 사용됨
+                    startIcon={<CasinoOutlined />}
                 >
                     게임칩
                 </Button>

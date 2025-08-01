@@ -1,7 +1,7 @@
 import {createApp, h} from 'vue'
 import type { App as VueApp } from 'vue'
 import App from './App.vue'
-// import { loadFonts } from './plugins/webfontloader'
+import { loadFonts } from './plugins/webfontloader'
 
 import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.css'
