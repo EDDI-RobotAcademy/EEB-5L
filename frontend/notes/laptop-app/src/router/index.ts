@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 import LaptopList from "../pages/list/LaptopList.vue";
-// import VueBoardRegister from "../pages/register/VueBoardRegister.vue";
+import LaptopRegister from "../pages/register/LaptopRegister.vue";
 // import VueBoardRead from "../pages/read/VueBoardRead.vue";
 // import VueBoardUpdate from "../pages/update/VueBoardUpdate.vue";
 
@@ -15,11 +15,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'LaptopList',
         component: LaptopList,
     },
-    // {
-    //     path: '/register',
-    //     name: 'VueBoardRegister',
-    //     component: VueBoardRegister,
-    // },
+    {
+        path: '/register',
+        name: 'LaptopRegister',
+        component: LaptopRegister,
+    },
     // {
     //     path: '/read/:boardId',
     //     name: 'VueBoardRead',

@@ -5,13 +5,13 @@
         <h2>💻 노트북 목록</h2>
       </v-col>
       <v-col cols="auto">
-<!--        <router-link :to="{ name: 'LaptopRegister' }">-->
-<!--          <v-btn :class="['btn-primary']" :style="registerBtnStyle" elevation="2"-->
-<!--                 @mouseover="hoverRegister = true"-->
-<!--                 @mouseleave="hoverRegister = false">-->
-<!--            노트북 등록-->
-<!--          </v-btn>-->
-<!--        </router-link>-->
+        <router-link :to="{ name: 'LaptopRegister' }">
+          <v-btn :class="['btn-primary']" :style="registerBtnStyle" elevation="2"
+                 @mouseover="hoverRegister = true"
+                 @mouseleave="hoverRegister = false">
+            노트북 등록
+          </v-btn>
+        </router-link>
       </v-col>
     </v-row>
 

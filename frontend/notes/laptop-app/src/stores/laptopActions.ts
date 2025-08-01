@@ -26,20 +26,33 @@ export const laptopActions = {
     //     }
     // },
     //
-    // async requestCreateLaptopToSpring(payload: {
-    //     title: string
-    //     content: string
-    // }): Promise<any> {
-    //     try {
-    //         const res = await axiosInstance.springAxiosInst.post('/laptop/register', payload)
-    //         alert('등록 성공!')
-    //         return res.data
-    //     } catch (error) {
-    //         alert('requestCreateLaptopToSpring() 문제 발생')
-    //         throw error
-    //     }
-    // },
-    //
+    async requestCreateLaptopToSpring(payload: FormData): Promise<any> {
+        try {
+            const token = localStorage.getItem('userToken') || ''
+            if (!token) {
+                alert('로그인이 필요합니다. 로그인 페이지로 이동합니다.')
+                return
+                // router.push('/authentication')
+            }
+
+            console.log('FormData entries:')
+            for (const pair of payload.entries()) {
+                console.log(pair[0], pair[1])
+            }
+
+            const res = await axiosInstance.springAxiosInst.post('/laptop/register', payload, {
+                headers: {
+                    Authorization: `Bearer ${token}`,  // 헤더에 토큰 포함
+                },
+            })
+            alert('등록 성공!')
+            return res.data
+        } catch (error) {
+            alert('requestCreateLaptopToSpring() 문제 발생')
+            throw error
+        }
+    },
+
     // async requestDeleteLaptopToSpring(boardId: number): Promise<void> {
     //     try {
     //         await axiosInstance.springAxiosInst.delete(`/laptop/delete/${boardId}`)
