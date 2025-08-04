@@ -1,14 +1,18 @@
 package com.example.monoproj.laptop.controller;
 
+import com.example.monoproj.game_chip.controller.response_form.ReadGameChipResponseForm;
+import com.example.monoproj.game_chip.service.response.ReadGameChipResponse;
 import com.example.monoproj.laptop.controller.request_form.ListLaptopRequestForm;
 import com.example.monoproj.laptop.controller.request_form.RegisterLaptopRequestForm;
 import com.example.monoproj.laptop.controller.response_form.ListLaptopResponseForm;
+import com.example.monoproj.laptop.controller.response_form.ReadLaptopResponseForm;
 import com.example.monoproj.laptop.controller.response_form.RegisterLaptopResponseForm;
 import com.example.monoproj.laptop.service.LaptopService;
 import com.example.monoproj.laptop.service.request.ListLaptopRequest;
 import com.example.monoproj.laptop.service.request.RegisterLaptopImageRequest;
 import com.example.monoproj.laptop.service.request.RegisterLaptopRequest;
 import com.example.monoproj.laptop.service.response.ListLaptopResponse;
+import com.example.monoproj.laptop.service.response.ReadLaptopResponse;
 import com.example.monoproj.laptop.service.response.RegisterLaptopResponse;
 import com.example.monoproj.redis_cache.service.RedisCacheService;
 import lombok.RequiredArgsConstructor;
@@ -64,7 +68,18 @@ public class LaptopController {
     public ListLaptopResponseForm list(@ModelAttribute ListLaptopRequestForm requestForm) {
         ListLaptopRequest request = requestForm.toListLaptopRequest();
         ListLaptopResponse response = laptopService.getAllLaptops(request);
-        return ListLaptopResponseForm.from(response);
+        ListLaptopResponseForm responseForm = ListLaptopResponseForm.from(response);
+
+        log.info("responseForm: {}", responseForm);
+        return responseForm;
+    }
+
+    @GetMapping("/read/{id}")
+    public ReadLaptopResponseForm read(@PathVariable("id") Long laptopId) {
+        ReadLaptopResponse response = laptopService.readLaptop(laptopId);
+        ReadLaptopResponseForm responseForm = ReadLaptopResponseForm.from(response);
+        log.info("responseForm: {}", responseForm);
+        return responseForm;
     }
 
     private String extractToken(String authorizationHeader) {

@@ -14,6 +14,17 @@ public interface LaptopImageRepository extends JpaRepository<LaptopImage, Long> 
             "SELECT li.laptop.id, li.imageUrl FROM LaptopImage li " +
                     "WHERE li.type = 'THUMBNAIL' AND li.laptop.id IN :laptopIds"
     )
-    Map<Long, String> findThumbnailUrlsByLaptopIds(@Param("laptopIds") List<Long> laptopIds);
+    List<Object[]> findThumbnailUrlTuples(@Param("laptopIds") List<Long> laptopIds);
 
+    @Query(
+            "SELECT li.imageUrl FROM LaptopImage li " +
+            "WHERE li.laptop.id = :laptopId AND li.type = com.example.monoproj.laptop.entity.LaptopImageType.THUMBNAIL"
+    )
+    String findThumbnailUrlByLaptopId(@Param("laptopId") Long laptopId);
+
+    @Query(
+            "SELECT li.imageUrl FROM LaptopImage li " +
+            "WHERE li.laptop.id = :laptopId AND li.type = com.example.monoproj.laptop.entity.LaptopImageType.DETAIL"
+    )
+    List<String> findDetailUrlsByLaptopId(@Param("laptopId") Long laptopId);
 }

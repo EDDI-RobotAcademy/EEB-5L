@@ -1,6 +1,6 @@
 package com.example.monoproj.laptop.controller.response_form;
 
-import com.example.monoproj.laptop.service.response.RegisterLaptopResponse;
+import com.example.monoproj.laptop.service.response.ReadLaptopResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -10,7 +10,8 @@ import java.util.List;
 @Getter
 @ToString
 @RequiredArgsConstructor
-public class RegisterLaptopResponseForm {
+public class ReadLaptopResponseForm {
+
     private final Long id;
     private final String title;
     private final String description;
@@ -23,8 +24,8 @@ public class RegisterLaptopResponseForm {
     private final String thumbnailImageUrl;
     private final List<String> detailImageUrlList;
 
-    public static RegisterLaptopResponseForm from(RegisterLaptopResponse response) {
-        return new RegisterLaptopResponseForm(
+    public static ReadLaptopResponseForm from(final ReadLaptopResponse response) {
+        return new ReadLaptopResponseForm(
                 response.getId(),
                 response.getTitle(),
                 response.getDescription(),
