@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 import LaptopList from "../pages/list/LaptopList.vue";
-// import VueBoardRegister from "../pages/register/VueBoardRegister.vue";
-// import VueBoardRead from "../pages/read/VueBoardRead.vue";
-// import VueBoardUpdate from "../pages/update/VueBoardUpdate.vue";
+import LaptopRegister from "../pages/register/LaptopRegister.vue";
+import LaptopRead from "../pages/read/LaptopRead.vue";
+import LaptopUpdate from "../pages/update/LaptopUpdate.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -15,23 +15,23 @@ const routes: Array<RouteRecordRaw> = [
         name: 'LaptopList',
         component: LaptopList,
     },
-    // {
-    //     path: '/register',
-    //     name: 'VueBoardRegister',
-    //     component: VueBoardRegister,
-    // },
-    // {
-    //     path: '/read/:boardId',
-    //     name: 'VueBoardRead',
-    //     components: { default: VueBoardRead },
-    //     props: { default: true },
-    // },
-    // {
-    //     path: '/update/:boardId',
-    //     name: 'VueBoardUpdate',
-    //     components: { default: VueBoardUpdate },
-    //     props: { default: true },
-    // },
+    {
+        path: '/register',
+        name: 'LaptopRegister',
+        component: LaptopRegister,
+    },
+    {
+        path: '/read/:id',
+        name: 'LaptopRead',
+        components: { default: LaptopRead },
+        props: { default: true },
+    },
+    {
+        path: '/update/:id',
+        name: 'LaptopUpdate',
+        components: { default: LaptopUpdate },
+        props: { default: true },
+    },
 ]
 
 const router = createRouter({

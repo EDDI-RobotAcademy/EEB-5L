@@ -10,16 +10,19 @@ export interface Laptop {
     updatedAt: string
 
     thumbnailImageUrl?: string
+    detailImageUrlList?: string[]
 }
 
 export interface LaptopState {
     laptopList: Laptop[]
     totalPages: number
     laptop: Laptop | null
+    loadedFromRegister: boolean
 }
 
 export const laptopState = (): LaptopState => ({
     laptopList: [],
     totalPages: 1,
-    laptop: null
+    laptop: null,
+    loadedFromRegister: false
 })

@@ -1,6 +1,6 @@
-package com.example.monoproj.game_chip.controller.response_form;
+package com.example.monoproj.laptop.controller.response_form;
 
-import com.example.monoproj.game_chip.service.response.ListGameChipResponse;
+import com.example.monoproj.laptop.service.response.ListLaptopResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -9,14 +9,14 @@ import java.util.Map;
 
 @Getter
 @RequiredArgsConstructor
-public class ListGameChipResponseForm {
-    private final List<Map<String, Object>> gameChipList;
+public class ListLaptopResponseForm {
+    private final List<Map<String, Object>> laptopList;
     private final int currentPage;
     private final int totalPages;
     private final long totalItems;
 
-    public static ListGameChipResponseForm from(ListGameChipResponse response) {
-        return new ListGameChipResponseForm(
+    public static ListLaptopResponseForm from(ListLaptopResponse response) {
+        return new ListLaptopResponseForm(
                 response.toMapList(),
                 response.getCurrentPage(),
                 response.getTotalPages(),

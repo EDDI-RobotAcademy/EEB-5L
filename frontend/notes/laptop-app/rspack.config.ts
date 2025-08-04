@@ -30,6 +30,10 @@ export default defineConfig({
     historyApiFallback: true,
     watchFiles: [path.resolve(__dirname, "src")],
 
+    client: {
+      overlay: false,
+    },
+
     setupMiddlewares: (middlewares, devServer) => {
       const envOrigins = process.env.MFE_CORS_ORIGIN ?? "";
       const allowedOrigins = envOrigins
@@ -113,6 +117,10 @@ export default defineConfig({
     new DefinePlugin({
       "process.env.VUE_APP_BASE_URL": JSON.stringify(process.env.VUE_APP_BASE_URL),
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: false,
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
     }),
     new ModuleFederationPlugin(mfConfig),
   ].filter(Boolean),
