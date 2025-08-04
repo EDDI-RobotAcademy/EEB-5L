@@ -70,7 +70,7 @@ public class S3Uploader {
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(bucket)
                 .key(key)
-                .acl(ObjectCannedACL.PUBLIC_READ) // 공개 권한
+//                .acl(ObjectCannedACL.PUBLIC_READ) // 공개 권한
                 .contentType(file.getContentType())
                 .build();
 

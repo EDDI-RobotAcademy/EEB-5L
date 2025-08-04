@@ -7,11 +7,16 @@ import com.example.monoproj.laptop.entity.LaptopImage;
 import com.example.monoproj.laptop.entity.LaptopImageType;
 import com.example.monoproj.laptop.repository.LaptopImageRepository;
 import com.example.monoproj.laptop.repository.LaptopRepository;
+import com.example.monoproj.laptop.service.request.ListLaptopRequest;
 import com.example.monoproj.laptop.service.request.RegisterLaptopImageRequest;
 import com.example.monoproj.laptop.service.request.RegisterLaptopRequest;
+import com.example.monoproj.laptop.service.response.ListLaptopResponse;
 import com.example.monoproj.laptop.service.response.RegisterLaptopResponse;
 import com.example.monoproj.utility.S3Uploader;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -64,5 +71,28 @@ public class LaptopServiceImpl implements LaptopService {
         allImages.addAll(savedDetailImages);
 
         return RegisterLaptopResponse.from(savedLaptop, allImages);
+    }
+
+    @Override
+    public ListLaptopResponse getAllLaptops(ListLaptopRequest request) {
+        int page = request.getPage() > 0 ? request.getPage() - 1 : 0;  // 0-based page index
+        int perPage = request.getPerPage() > 0 ? request.getPerPage() : 10;
+
+        Pageable pageable = PageRequest.of(page, perPage);
+        Page<Laptop> paginatedlaptopList = laptopRepository.findAll(pageable);
+        List<Long> laptopIds = paginatedlaptopList.getContent().stream()
+                .map(Laptop::getId)
+                .collect(Collectors.toList());
+
+        // 2. LaptopId로 썸네일 이미지 URL만 조회
+        Map<Long, String> thumbnailUrlMap = laptopImageRepository.findThumbnailUrlsByLaptopIds(laptopIds);
+
+        return new ListLaptopResponse(
+                paginatedlaptopList.getContent(),
+                paginatedlaptopList.getNumber() + 1,
+                paginatedlaptopList.getTotalPages(),
+                paginatedlaptopList.getTotalElements(),
+                thumbnailUrlMap
+        );
     }
 }

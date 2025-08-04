@@ -3,10 +3,12 @@ package com.example.monoproj.laptop.controller.response_form;
 import com.example.monoproj.laptop.service.response.RegisterLaptopResponse;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
 @Getter
+@ToString
 @RequiredArgsConstructor
 public class RegisterLaptopResponseForm {
     private final Long id;
