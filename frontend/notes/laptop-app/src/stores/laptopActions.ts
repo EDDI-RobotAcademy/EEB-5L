@@ -30,7 +30,7 @@ export const laptopActions = {
                 ram: response.ramSize,
                 storage: response.storageType,
                 thumbnailImageUrl: response.thumbnailImageUrl,
-                detailImageUrls: response.detailImageUrls
+                detailImageUrlList: response.detailImageUrlList
             }
         } catch (error) {
             alert('requestLaptopToSpring() 문제 발생!')
@@ -73,7 +73,7 @@ export const laptopActions = {
                 createdAt: data.createdAt,
                 updatedAt: data.updatedAt,
                 thumbnailImageUrl: data.thumbnailImageUrl,
-                detailImageUrls: data.detailImageUrls,
+                detailImageUrlList: data.detailImageUrlList,
             }
 
             this.loadedFromRegister = true

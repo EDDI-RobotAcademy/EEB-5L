@@ -47,12 +47,12 @@
       </v-col>
     </v-row>
 
-    <v-row v-if="detailImageUrls.length > 0">
+    <v-row v-if="detailImageUrlList.length > 0">
       <v-col cols="12">
         <h4>상세 이미지</h4>
         <v-row>
           <v-col
-              v-for="(url, index) in detailImageUrls"
+              v-for="(url, index) in detailImageUrlList"
               :key="url + '-' + index"
               cols="3"
           >
@@ -117,7 +117,7 @@ const cpuType = ref('')
 const ramSize = ref('')
 const storageType = ref('')
 const thumbnailUrl = ref('')
-const detailImageUrls = ref<string[]>([])
+const detailImageUrlList = ref<string[]>([])
 const laptopId = ref<number | null>(null)
 
 // 버튼 hover 상태
@@ -167,7 +167,7 @@ onMounted(async () => {
     ramSize.value = data.ram
     storageType.value = data.storage
     thumbnailUrl.value = data.thumbnailImageUrl
-    detailImageUrls.value = data.detailImageUrls ?? []
+    detailImageUrlList.value = data.detailImageUrlList ?? []
 
     // 일회성 플래그니까 바로 초기화
     laptopStore.loadedFromRegister = false
@@ -187,7 +187,7 @@ onMounted(async () => {
     ramSize.value = data.ram
     storageType.value = data.storage
     thumbnailUrl.value = data.thumbnailImageUrl
-    detailImageUrls.value = data.detailImageUrls ?? []
+    detailImageUrlList.value = data.detailImageUrlList ?? []
   } catch (e) {
     alert('조회 실패')
     console.error(e)

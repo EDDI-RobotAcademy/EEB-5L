@@ -195,8 +195,25 @@
       <v-col cols="12">
         <h4>추가 이미지 미리보기</h4>
         <v-row>
-          <v-col v-for="(src, idx) in imagePreviews" :key="src + '-' + idx" cols="3">
+          <v-col
+              v-for="(src, idx) in imagePreviews"
+              :key="src + '-' + idx"
+              cols="3"
+              class="position-relative"
+              style="position: relative;"
+          >
             <v-img :src="src" aspect-ratio="1" contain />
+
+            <!-- 삭제 버튼 -->
+            <v-btn
+                icon
+                small
+                color="red"
+                style="position: absolute; top: 4px; right: 4px; z-index: 10;"
+                @click="removeImage(idx)"
+            >
+              <v-icon icon="mdi-close" />
+            </v-btn>
           </v-col>
         </v-row>
       </v-col>
@@ -499,7 +516,9 @@ watch(imageFiles, (files) => {
 
 // 개별 이미지 삭제
 function removeImage(index: number) {
+  console.log('removeImage called:', index, imageFiles.value[index]?.name)
   imageFiles.value.splice(index, 1)
+  imageFiles.value = [...imageFiles.value] // 강제 갱신
 }
 
 // 등록 요청

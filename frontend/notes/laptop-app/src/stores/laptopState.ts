@@ -10,6 +10,7 @@ export interface Laptop {
     updatedAt: string
 
     thumbnailImageUrl?: string
+    detailImageUrlList?: string[]
 }
 
 export interface LaptopState {
