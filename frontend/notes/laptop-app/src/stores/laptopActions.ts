@@ -16,16 +16,28 @@ export const laptopActions = {
         }
     },
 
-    // async requestLaptopToSpring(laptopId: number): Promise<void> {
-    //     try {
-    //         const res = await axiosInstance.springAxiosInst.get(`/laptop/read/${laptopId}`)
-    //         this.laptop = res.data
-    //     } catch (error) {
-    //         alert('requestLaptopToSpring() 문제 발생!')
-    //         throw error
-    //     }
-    // },
-    //
+    async requestLaptopToSpring(laptopId: number): Promise<void> {
+        try {
+            const res = await axiosInstance.springAxiosInst.get(`/laptop/read/${laptopId}`)
+            const response = res.data
+
+            this.laptop = {
+                laptopId: response.id,
+                title: response.title,
+                description: response.description,
+                price: response.price,
+                cpu: response.cpuType,
+                ram: response.ramSize,
+                storage: response.storageType,
+                thumbnailImageUrl: response.thumbnailImageUrl,
+                detailImageUrls: response.detailImageUrls
+            }
+        } catch (error) {
+            alert('requestLaptopToSpring() 문제 발생!')
+            throw error
+        }
+    },
+
     async requestCreateLaptopToSpring(payload: FormData): Promise<any> {
         try {
             const token = localStorage.getItem('userToken') || ''
@@ -40,13 +52,33 @@ export const laptopActions = {
                 console.log(pair[0], pair[1])
             }
 
-            const res = await axiosInstance.springAxiosInst.post('/laptop/register', payload, {
+            const response = await axiosInstance.springAxiosInst.post('/laptop/register', payload, {
                 headers: {
                     Authorization: `Bearer ${token}`,  // 헤더에 토큰 포함
                 },
             })
             alert('등록 성공!')
-            return res.data
+
+            const data = response.data
+            console.log('response data:', data)
+
+            this.laptop = {
+                laptopId: data.id,
+                title: data.title,
+                description: data.description,
+                price: data.price,
+                cpu: data.cpuType,
+                ram: data.ramSize,
+                storage: data.storageType,
+                createdAt: data.createdAt,
+                updatedAt: data.updatedAt,
+                thumbnailImageUrl: data.thumbnailImageUrl,
+                detailImageUrls: data.detailImageUrls,
+            }
+
+            this.loadedFromRegister = true
+
+            return data.id
         } catch (error) {
             alert('requestCreateLaptopToSpring() 문제 발생')
             throw error

@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 import LaptopList from "../pages/list/LaptopList.vue";
 import LaptopRegister from "../pages/register/LaptopRegister.vue";
-// import VueBoardRead from "../pages/read/VueBoardRead.vue";
+import LaptopRead from "../pages/read/LaptopRead.vue";
 // import VueBoardUpdate from "../pages/update/VueBoardUpdate.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -20,12 +20,12 @@ const routes: Array<RouteRecordRaw> = [
         name: 'LaptopRegister',
         component: LaptopRegister,
     },
-    // {
-    //     path: '/read/:boardId',
-    //     name: 'VueBoardRead',
-    //     components: { default: VueBoardRead },
-    //     props: { default: true },
-    // },
+    {
+        path: '/read/:id',
+        name: 'LaptopRead',
+        components: { default: LaptopRead },
+        props: { default: true },
+    },
     // {
     //     path: '/update/:boardId',
     //     name: 'VueBoardUpdate',

@@ -517,16 +517,23 @@ async function onSubmit() {
   formData.append('description', description.value)
   formData.append('price', price.value.toString())
   formData.append('thumbnailFile', thumbnailFile.value)
-  formData.append('cpu', cpu.value)
-  formData.append('ram', ram.value)
-  formData.append('storage', storage.value)
+  formData.append('cpuType', cpu.value)
+  formData.append('ramSize', ram.value)
+  formData.append('storageType', storage.value)
   imageFiles.value.forEach((file) => {
     formData.append('imageFileList', file)
   })
 
   try {
-    const response = await laptopStore.requestCreateLaptopToSpring(formData)
-    router.push({ name: 'LaptopRead', params: { id: response.id.toString() } })
+    const id = await laptopStore.requestCreateLaptopToSpring(formData)
+
+    console.log('id:', id)
+
+    router.push({
+      name: 'LaptopRead',
+      params: { id },
+      query: { fromRegister: 'true' }
+    })
   } catch (error) {
     alert('등록 실패!')
     console.error(error)
